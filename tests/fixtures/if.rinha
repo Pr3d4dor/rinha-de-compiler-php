@@ -1,0 +1,5 @@
+if (true) {
+    print("cima")
+} else {
+    print("baixo")
+}

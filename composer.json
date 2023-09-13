@@ -1,0 +1,17 @@
+{
+    "name": "bine/rinha-de-compiler-php",
+    "autoload": {
+        "psr-4": {
+            "Bine\\RinhaDeCompilerPhp\\": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.3",
+        "phpunit/phpunit": "^10.3",
+        "friendsofphp/php-cs-fixer": "^3.26"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit tests",
+        "format": "vendor/bin/php-cs-fixer fix"
+    }
+}

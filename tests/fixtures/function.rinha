@@ -1,0 +1,5 @@
+let x = fn (a, b) => {
+    print(a + b)
+};
+
+x(1, "ab")

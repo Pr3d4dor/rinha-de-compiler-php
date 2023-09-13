@@ -1,0 +1,5 @@
+let x = fn (a) => {
+    a
+};
+
+print(x)

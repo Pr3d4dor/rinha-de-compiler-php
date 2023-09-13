@@ -1,0 +1,14 @@
+version: "3.5"
+
+services:
+  rinha-php-interpreter:
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: DockerfileREPL
+    deploy:
+      resources:
+        limits:
+          cpus: '2.00'
+          memory: '2.0GB'

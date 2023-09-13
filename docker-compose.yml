@@ -1,0 +1,13 @@
+version: "3.5"
+
+services:
+  rinha-php-interpreter:
+    build:
+      context: .
+    deploy:
+      resources:
+        limits:
+          cpus: '2.00'
+          memory: '2.0GB'
+    volumes:
+      - ./source.rinha.json:/var/rinha/source.rinha.json
