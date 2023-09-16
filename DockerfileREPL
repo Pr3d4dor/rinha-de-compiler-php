@@ -4,9 +4,9 @@ FROM php:8.2-cli-alpine as build
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-WORKDIR /var/app
+WORKDIR /var/rinha
 
-COPY . /var/app
+COPY . /var/rinha
 
 RUN apk add --no-cache rust cargo && \
     cargo install rinha && \
