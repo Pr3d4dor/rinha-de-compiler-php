@@ -83,6 +83,8 @@ class RinhaInterpreter
                 }
 
                 echo $term . "\n";
+
+                return $term;
                 break;
             case 'First':
                 $result = $this->interpret($node['value'], $stack);
