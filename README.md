@@ -11,3 +11,7 @@ Executar:
 ```sh
 make run-interpreter
 ```
+
+## Testar/Executar Online
+
+<https://pr3d4dor.github.io/rinha-de-compiler-php>
