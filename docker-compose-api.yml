@@ -1,0 +1,21 @@
+version: "3.5"
+
+services:
+  rinha-php-interpreter-api:
+    build:
+      context: .
+      dockerfile: DockerfileAPI
+    deploy:
+      resources:
+        limits:
+          cpus: '2.00'
+          memory: '2.0GB'
+    networks:
+      - rinha-php-interpreter-api
+    ports:
+      - "127.0.0.1:8000:80"
+    volumes:
+      - ./:/var/rinha
+
+networks:
+  rinha-php-interpreter-api:

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rinha de Compiler - Code Editor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .topbar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .column {
+            flex: 1;
+            padding: 20px;
+            height: 500px;
+        }
+
+        .code-editor {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .spinner {
+            display: none;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #007bff;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <button id="executeButton">Execute</button>
+        <div class="spinner" id="spinner"></div>
+    </div>
+    <div class="container">
+        <div class="column">
+            <textarea class="code-editor" id="codeInput" placeholder="Enter your code here..."></textarea>
+        </div>
+        <div class="column" id="outputContainer"></div>
+    </div>
+
+    <script>
+        const executeButton = document.getElementById("executeButton");
+        const codeInput = document.getElementById("codeInput");
+        const outputContainer = document.getElementById("outputContainer");
+        const spinner = document.getElementById("spinner");
+
+        executeButton.addEventListener("click", () => {
+            const code = codeInput.value;
+
+            spinner.style.display = "inline-block";
+            executeButton.style.display = "none";
+
+            const formData = new FormData();
+            formData.append("source_code", code);
+
+            fetch("https://rinha-de-compiler-php.onrender.com", {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => response.text())
+                .then((result) => {
+                    spinner.style.display = "none";
+                    executeButton.style.display = "inline-block";
+                    outputContainer.innerHTML = result;
+                })
+                .catch((error) => {
+                    spinner.style.display = "none";
+                    executeButton.style.display = "inline-block";
+                    console.error("Error:", error);
+                    outputContainer.innerHTML = "An error occurred while executing the code.";
+                });
+        });
+    </script>
+</body>
+
+</html>

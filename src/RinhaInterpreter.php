@@ -44,7 +44,7 @@ class RinhaInterpreter
 
     public function interpret(
         array $node,
-        array &$stack,
+        array &$stack = [],
         bool $inTailPosition = false
     ) {
         switch ($node['kind']) {
@@ -153,14 +153,14 @@ class RinhaInterpreter
 
                         return intval($lhs % $rhs);
                         break;
-                    // Comparação
+                        // Comparação
                     case 'Eq':
                         return $lhs === $rhs;
                         break;
                     case 'Neq':
                         return $lhs !== $rhs;
                         break;
-                    // Booleanos
+                        // Booleanos
                     case 'Lt':
                         return $lhs < $rhs;
                         break;
