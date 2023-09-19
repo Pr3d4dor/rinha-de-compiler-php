@@ -213,7 +213,10 @@ class RinhaInterpreter
             case 'Call':
                 $result = $this->interpret($node['callee'], $stack);
 
-                if ($result['kind'] === 'Closure') {
+                if (is_array($result)
+                    && isset($result['kind'])
+                    && $result['kind'] === 'Closure'
+                ) {
                     if (count($result['params']) !== count($node['arguments'])) {
                         throw new \InvalidArgumentException('Invalid number of closure params or node arguments!');
                     }
